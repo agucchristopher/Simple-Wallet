@@ -25,11 +25,11 @@ const Header = ({ darkmode }) => {
           <Text
             style={{
               color: darkmode ? "white" : "#121212",
-              fontSize: 15,
+              fontSize: 23,
               fontFamily: "RBold",
             }}
           >
-            Hi, Username
+            Hi, Christopher
           </Text>
         </View>
       </View>
@@ -38,27 +38,14 @@ const Header = ({ darkmode }) => {
         <TouchableOpacity
           style={{
             backgroundColor: "grey",
-            borderRadius: 45,
-            height: 45,
-            width: 45,
+            borderRadius: 10,
+            height: 50,
+            width: 50,
           }}
         >
           <Image
             source={require("./../../assets/images/me.png")}
-            style={{ height: 45, width: 45 }}
-          />
-        </TouchableOpacity>
-        <TouchableOpacity
-          style={{
-            backgroundColor: "grey",
-            borderRadius: 45,
-            height: 45,
-            width: 45,
-          }}
-        >
-          <Image
-            source={require("./../../assets/images/me.png")}
-            style={{ height: 45, width: 45 }}
+            style={{ height: 50, width: 50 }}
           />
         </TouchableOpacity>
       </View>
