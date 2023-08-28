@@ -3,9 +3,11 @@ import React from "react";
 import { StatusBar } from "expo-status-bar";
 import { SafeAreaView } from "react-native-safe-area-context";
 import Svg, { Path } from "react-native-svg";
+import { Line } from "../../components";
+import VirtualKeyboard from "../../components/vkeyboard/VirtualKeyboard";
 const Transfer = () => {
   return (
-    <View>
+    <View style={{ flex: 1 }}>
       <StatusBar backgroundColor="#99ff1d" />
       <View
         style={{
@@ -61,6 +63,102 @@ const Transfer = () => {
         >
           $ 1,000.00{" "}
         </Text>
+      </View>
+      <View
+        style={{
+          flexDirection: "row",
+          margin: 5,
+          marginLeft: 0,
+          alignSelf: "center",
+        }}
+      >
+        <View
+          style={{
+            backgroundColor: "darkgrey",
+            width: 60,
+            height: 60,
+            alignContent: "center",
+            justifyContent: "center",
+            borderRadius: 15,
+            margin: 18,
+            // marginRight: 8,
+            opacity: 0.9,
+          }}
+        >
+          <Svg
+            style={{ alignSelf: "center", justifyContent: "center", gap: 5 }}
+            width={35}
+            height={25}
+            viewBox="0 0 20 20"
+          >
+            <Path
+              d="M18.0049 7H21.0049C21.5572 7 22.0049 7.44772 22.0049 8V20C22.0049 20.5523 21.5572 21 21.0049 21H3.00488C2.4526 21 2.00488 20.5523 2.00488 20V4C2.00488 3.44772 2.4526 3 3.00488 3H18.0049V7ZM4.00488 9V19H20.0049V9H4.00488ZM4.00488 5V7H16.0049V5H4.00488ZM15.0049 13H18.0049V15H15.0049V13Z"
+              fill="#000"
+            />
+          </Svg>
+        </View>
+        <View
+          style={{
+            flexDirection: "column",
+            margin: 18,
+            marginLeft: 0,
+            marginRight: 0,
+          }}
+        >
+          <Text style={{ fontSize: 18, fontFamily: "RBold" }}>
+            Cash Balance
+          </Text>
+          <Text style={{ fontSize: 15, fontFamily: "RMedium" }}>
+            $23,000.00
+          </Text>
+        </View>
+        <View
+          style={{
+            margin: 18,
+            marginLeft: 80,
+            justifyContent: "flex-end",
+            alignSelf: "center",
+            marginRight: 0,
+          }}
+        >
+          <TouchableOpacity>
+            <Svg width={30} height={35} viewBox="0 0 20 20">
+              <Path
+                d="M18.2073 9.04304 12.0002 2.83594 5.79312 9.04304 7.20733 10.4573 12.0002 5.66436 16.7931 10.4573 18.2073 9.04304ZM5.79297 14.9574 12.0001 21.1646 18.2072 14.9574 16.793 13.5432 12.0001 18.3361 7.20718 13.5432 5.79297 14.9574Z"
+                fill="#000"
+              />
+            </Svg>
+          </TouchableOpacity>
+        </View>
+      </View>
+      <Line />
+      <VirtualKeyboard />
+      <View style={{ alignItems: "flex-end" }}>
+        <TouchableOpacity
+          style={{
+            paddingHorizontal: 50,
+            backgroundColor: "black",
+            height: 65,
+            width: "70%",
+            alignSelf: "center",
+            borderRadius: 10000,
+            margin: 10,
+            alignContent: "center",
+            justifyContent: "center",
+          }}
+        >
+          <Text
+            style={{
+              color: "white",
+              alignSelf: "center",
+              justifyContent: "center",
+              fontSize: 20,
+              fontFamily: "RBold",
+            }}
+          >
+            Send Money
+          </Text>
+        </TouchableOpacity>
       </View>
     </View>
   );

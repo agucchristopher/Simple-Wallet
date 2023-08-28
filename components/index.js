@@ -1,3 +1,4 @@
 import Header from "./header";
+import Line from "./line";
 
-export { Header };
+export { Header, Line };
