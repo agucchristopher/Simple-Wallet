@@ -61,10 +61,10 @@ const Transfer = () => {
             marginTop: 30,
           }}
         >
-          $ 1,000.00{" "}
+          $1,000.00{" "}
         </Text>
       </View>
-      <View
+      <TouchableOpacity
         style={{
           flexDirection: "row",
           margin: 5,
@@ -130,7 +130,7 @@ const Transfer = () => {
             </Svg>
           </TouchableOpacity>
         </View>
-      </View>
+      </TouchableOpacity>
       <Line />
       <VirtualKeyboard />
       <View style={{ alignItems: "flex-end" }}>

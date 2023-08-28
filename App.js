@@ -13,9 +13,9 @@ import { Home, Transfer } from "./screens";
 
 export default function App() {
   const [fontsLoaded] = useFonts({
-    RBold: require("./assets/fonts/Poppins-Bold.ttf"),
-    RMedium: require("./assets/fonts/Poppins-Medium.ttf"),
-    RRegular: require("./assets/fonts/Poppins-Regular.ttf"),
+    RBold: require("./assets/fonts/Ubuntu-Bold.ttf"),
+    RMedium: require("./assets/fonts/Ubuntu-Medium.ttf"),
+    RRegular: require("./assets/fonts/Ubuntu-Regular.ttf"),
   });
   if (!fontsLoaded) {
     return (
