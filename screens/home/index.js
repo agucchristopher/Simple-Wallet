@@ -32,47 +32,6 @@ const Home = ({ darkmode }) => {
           backgroundColor={isDarkmode ? "#121212" : "white"}
         />
         <Header darkmode={isDarkmode} />
-
-        <View
-          style={{
-            flexDirection: "row",
-            justifyContent: "space-between",
-            alignItems: "center",
-          }}
-        >
-          <TouchableOpacity
-            onPress={() => {
-              seteyeOpen(!eyeOpen);
-            }}
-          >
-            <Text
-              style={{
-                color: "white",
-                fontFamily: "RBold",
-                fontSize: 20,
-                margin: 13,
-                marginBottom: 0,
-                marginTop: 9,
-              }}
-            >
-              Balance: $ {eyeOpen ? "19,000" : "****"}
-            </Text>
-          </TouchableOpacity>
-
-          <TouchableOpacity>
-            <Text
-              style={{
-                color: "white",
-                fontFamily: "RBold",
-                fontSize: 13,
-                margin: 15,
-                //   marginTop: 0,
-              }}
-            >
-              Transaction History {">"}
-            </Text>
-          </TouchableOpacity>
-        </View>
       </View>
       <ScrollView>
         <Switch

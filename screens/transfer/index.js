@@ -61,7 +61,7 @@ const Transfer = () => {
             marginTop: 30,
           }}
         >
-          $1,000.00{" "}
+          $100,000.00{" "}
         </Text>
       </View>
       <TouchableOpacity
@@ -139,7 +139,7 @@ const Transfer = () => {
             paddingHorizontal: 50,
             backgroundColor: "black",
             height: 65,
-            width: "70%",
+            width: "80%",
             alignSelf: "center",
             borderRadius: 10000,
             margin: 10,

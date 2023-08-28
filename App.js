@@ -35,7 +35,7 @@ export default function App() {
   console.log(StatusBar.height);
   return (
     <SafeAreaView style={styles.container}>
-      <Transfer darkmode={true} />
+      <Home darkmode={true} />
     </SafeAreaView>
   );
 }
