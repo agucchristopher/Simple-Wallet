@@ -9,7 +9,7 @@ import {
   View,
 } from "react-native";
 import { useFonts } from "expo-font";
-import { Home } from "./screens";
+import { Home, Transfer } from "./screens";
 
 export default function App() {
   const [fontsLoaded] = useFonts({
@@ -35,7 +35,7 @@ export default function App() {
   console.log(StatusBar.height);
   return (
     <SafeAreaView style={styles.container}>
-      <Home darkmode={true} />
+      <Transfer darkmode={true} />
     </SafeAreaView>
   );
 }
