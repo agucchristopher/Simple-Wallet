@@ -129,9 +129,10 @@ const Home = ({ darkmode }) => {
                 style={{
                   flexDirection: "row",
                   margin: 10,
-                  backgroundColor: "grey",
+                  borderColor: "grey",
                   padding: 5,
                   borderRadius: 5,
+                  borderWidth: 1.5,
                 }}
               >
                 <View style={{ margin: 5, marginRight: 15 }}>
@@ -148,7 +149,9 @@ const Home = ({ darkmode }) => {
                     <Svg width={38} height={30} viewBox="0 0 24 24">
                       <Path
                         d={
-                          "M16.0037 9.41421L7.39712 18.0208L5.98291 16.6066L14.5895 8H7.00373V6H18.0037V17H16.0037V9.41421Z"
+                          item == "out"
+                            ? "M16.0037 9.41421L7.39712 18.0208L5.98291 16.6066L14.5895 8H7.00373V6H18.0037V17H16.0037V9.41421Z"
+                            : "M9 13.589L17.6066 4.98242L19.0208 6.39664L10.4142 15.0032H18V17.0032H7V6.00324H9V13.589Z"
                         }
                         fill="#fff"
                       />
@@ -160,7 +163,7 @@ const Home = ({ darkmode }) => {
                     style={{
                       fontFamily: "RBold",
                       fontSize: 20,
-                      color: "white",
+                      color: "#121212",
                     }}
                   >
                     Paypal Funding
@@ -168,8 +171,8 @@ const Home = ({ darkmode }) => {
                   <Text
                     style={{
                       fontFamily: "RBold",
-                      fontSize: 18,
-                      color: "white",
+                      fontSize: 20,
+                      color: "#121212",
                     }}
                   >
                     Fri 2nd September
@@ -181,9 +184,9 @@ const Home = ({ darkmode }) => {
                     justifyContent: "flex-end",
                     margin: 10,
                     fontFamily: "RBold",
-                    fontSize: 20,
-                    color: "#FFFFFF",
-                    marginLeft: 50,
+                    fontSize: 23,
+                    // color: "#FFFFFF",
+                    marginLeft: 70,
                   }}
                 >
                   $200
