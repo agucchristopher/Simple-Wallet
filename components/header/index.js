@@ -27,6 +27,7 @@ const Header = ({ darkmode }) => {
               color: darkmode ? "white" : "#121212",
               fontSize: 23,
               fontFamily: "RBold",
+              marginLeft: 10,
             }}
           >
             Hi, Christopher
