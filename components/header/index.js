@@ -25,9 +25,9 @@ const Header = ({ darkmode }) => {
           <Text
             style={{
               color: darkmode ? "white" : "#121212",
-              fontSize: 23,
+              fontSize: 25,
               fontFamily: "RBold",
-              marginLeft: 10,
+              marginLeft: 15,
             }}
           >
             Hi, Christopher
