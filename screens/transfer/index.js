@@ -1,13 +1,21 @@
-import { StyleSheet, Text, TouchableOpacity, View } from "react-native";
+import {
+  Dimensions,
+  StyleSheet,
+  Text,
+  TouchableOpacity,
+  View,
+} from "react-native";
 import React from "react";
 import { StatusBar } from "expo-status-bar";
 import { SafeAreaView } from "react-native-safe-area-context";
 import Svg, { Path } from "react-native-svg";
 import { Line } from "../../components";
 import VirtualKeyboard from "../../components/vkeyboard/VirtualKeyboard";
-const Transfer = () => {
+const Transfer = ({ navigation }) => {
   return (
-    <View style={{ flex: 1 }}>
+    <View
+      style={{ flex: 1, marginTop: Dimensions.get("window").height * 0.04 }}
+    >
       <StatusBar backgroundColor="#99ff1d" />
       <View
         style={{
@@ -27,7 +35,7 @@ const Transfer = () => {
             alignContent: "center",
           }}
         >
-          <TouchableOpacity>
+          <TouchableOpacity onPress={() => navigation.goBack()}>
             <Svg width={30} height={30} viewBox="0 0 20 20">
               <Path
                 d="M10.8284 12.0007L15.7782 16.9504L14.364 18.3646L8 12.0007L14.364 5.63672L15.7782 7.05093L10.8284 12.0007"
@@ -38,7 +46,7 @@ const Transfer = () => {
           <Text
             style={{
               textAlign: "center",
-              marginLeft: "30%",
+              marginLeft: "35%",
               alignSelf: "center",
               justifyContent: "center",
               fontFamily: "RBold",
@@ -67,16 +75,17 @@ const Transfer = () => {
       <TouchableOpacity
         style={{
           flexDirection: "row",
-          margin: 5,
+          margin: 1,
           marginLeft: 0,
           alignSelf: "center",
+          justifyContent: "space-evenly",
         }}
       >
         <View
           style={{
             backgroundColor: "darkgrey",
-            width: 60,
-            height: 60,
+            width: 50,
+            height: 50,
             alignContent: "center",
             justifyContent: "center",
             borderRadius: 15,
@@ -87,9 +96,9 @@ const Transfer = () => {
         >
           <Svg
             style={{ alignSelf: "center", justifyContent: "center", gap: 5 }}
-            width={35}
+            width={25}
             height={25}
-            viewBox="0 0 20 20"
+            viewBox="0 0 24 24"
           >
             <Path
               d="M18.0049 7H21.0049C21.5572 7 22.0049 7.44772 22.0049 8V20C22.0049 20.5523 21.5572 21 21.0049 21H3.00488C2.4526 21 2.00488 20.5523 2.00488 20V4C2.00488 3.44772 2.4526 3 3.00488 3H18.0049V7ZM4.00488 9V19H20.0049V9H4.00488ZM4.00488 5V7H16.0049V5H4.00488ZM15.0049 13H18.0049V15H15.0049V13Z"
@@ -138,8 +147,8 @@ const Transfer = () => {
           style={{
             paddingHorizontal: 50,
             backgroundColor: "black",
-            height: 65,
-            width: "80%",
+            height: 60,
+            width: "85%",
             alignSelf: "center",
             borderRadius: 10000,
             margin: 10,

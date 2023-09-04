@@ -8,9 +8,13 @@ import {
   Text,
   View,
 } from "react-native";
+import {
+  createNativeStackNavigator,
+  createStackNavigator,
+} from "@react-navigation/stack";
 import { useFonts } from "expo-font";
-import { Home, Transfer } from "./screens";
-
+import { Home, Profile, Transfer } from "./screens";
+import { NavigationContainer } from "@react-navigation/native";
 export default function App() {
   const [fontsLoaded] = useFonts({
     RBold: require("./assets/fonts/Ubuntu-Bold.ttf"),
@@ -33,10 +37,30 @@ export default function App() {
     );
   }
   console.log(StatusBar.height);
+  const Stack = createStackNavigator();
+
   return (
-    <SafeAreaView style={styles.container}>
-      <Home darkmode={true} />
-    </SafeAreaView>
+    <>
+      <StatusBar style="dark" backgroundColor="#121212" />
+      <NavigationContainer>
+        <Stack.Navigator screenOptions={{ headerShown: false }}>
+          <Stack.Screen name="Home" component={Home} />
+          <Stack.Screen name="Transfer" component={Transfer} />
+          {/* <Stack.Navigator screenOptions={{ presentation: "modal" }}> */}
+          <Stack.Screen
+            name="Profile"
+            options={{
+              presentation: "modal",
+              animationEnabled: true,
+              animationTypeForReplace: "pop",
+            }}
+            initialParams={{ presentation: "modal" }}
+            component={Profile}
+          />
+          {/* </Stack.Navigator> */}
+        </Stack.Navigator>
+      </NavigationContainer>
+    </>
   );
 }
 

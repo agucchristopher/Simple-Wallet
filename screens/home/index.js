@@ -1,4 +1,5 @@
 import {
+  Dimensions,
   FlatList,
   Image,
   ScrollView,
@@ -14,8 +15,8 @@ import { StatusBar } from "expo-status-bar";
 import Svg, { Path } from "react-native-svg";
 import EmojiPicker from "../../components/modal/EmojiPicker";
 
-const Home = ({ darkmode }) => {
-  //   let isDarkmode = darkmode;
+const Home = ({ navigation }) => {
+  let darkmode = true;
   const [eyeOpen, seteyeOpen] = useState(true);
   const [modalOpen, setmodalOpen] = useState(false);
   const [isDarkmode, setisDarkmode] = useState(darkmode);
@@ -26,16 +27,11 @@ const Home = ({ darkmode }) => {
           styles.container,
           {
             backgroundColor: isDarkmode ? "#121212" : "white",
-            height: "42%",
-            borderBottomLeftRadius: 5,
-            borderBottomRightRadius: 5,
+            height: "36%",
           },
         ]}
       >
-        <StatusBar
-          style={!isDarkmode ? "dark" : "light"}
-          backgroundColor={isDarkmode ? "#121212" : "white"}
-        />
+        <StatusBar style={"dark"} backgroundColor={"black"} />
         <View
           style={{
             width: "98%",
@@ -70,7 +66,7 @@ const Home = ({ darkmode }) => {
 
           <View style={{ flexDirection: "row", gap: 10 }}>
             <TouchableOpacity
-              onPress={() => setmodalOpen(true)}
+              onPress={() => navigation.navigate("Profile")}
               style={{
                 backgroundColor: "grey",
                 borderRadius: 10,
@@ -106,8 +102,12 @@ const Home = ({ darkmode }) => {
             All Accounts .{" "}
             <Text style={{ color: "darkgrey" }}>Total Balance</Text>
           </Text>
-          <Text style={{ color: "white", fontSize: 30, fontFamily: "RBold" }}>
-            $2,300,000.<Text style={{ fontSize: 20 }}>00</Text>
+          <Text
+            onPress={() => seteyeOpen(!eyeOpen)}
+            style={{ color: "white", fontSize: 30, fontFamily: "RBold" }}
+          >
+            ${eyeOpen ? "2,300,000" : "****"}{" "}
+            <Text style={{ fontSize: 20 }}>.00</Text>
           </Text>
         </View>
         <View
@@ -137,6 +137,7 @@ const Home = ({ darkmode }) => {
             renderItem={({ item }) => {
               return (
                 <TouchableOpacity
+                  onPress={() => navigation.navigate("Transfer")}
                   style={{
                     alignSelf: "center",
                     alignItems: "center",
@@ -160,7 +161,10 @@ const Home = ({ darkmode }) => {
           />
         </View>
       </View>
-      <ScrollView>
+      <ScrollView
+        showsHorizontalScrollIndicator={false}
+        showsVerticalScrollIndicator={false}
+      >
         <Text
           style={{
             color: "black",
@@ -176,7 +180,7 @@ const Home = ({ darkmode }) => {
           data={["in", "out", "in", "in", "out", "out", "in", "in"]}
           renderItem={({ item }) => {
             return (
-              <View
+              <TouchableOpacity
                 style={{
                   flexDirection: "row",
                   margin: 10,
@@ -242,7 +246,7 @@ const Home = ({ darkmode }) => {
                 >
                   $200
                 </Text>
-              </View>
+              </TouchableOpacity>
             );
           }}
         />
@@ -263,5 +267,6 @@ const styles = StyleSheet.create({
   container: {
     padding: 8,
     paddingTop: 20,
+    marginTop: Dimensions.get("window").height * 0.04,
   },
 });
