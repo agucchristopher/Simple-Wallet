@@ -36,7 +36,6 @@ export default function App() {
       />
     );
   }
-  console.log(StatusBar.height);
   const Stack = createStackNavigator();
 
   return (
@@ -45,7 +44,15 @@ export default function App() {
       <NavigationContainer>
         <Stack.Navigator screenOptions={{ headerShown: false }}>
           <Stack.Screen name="Home" component={Home} />
-          <Stack.Screen name="Transfer" component={Transfer} />
+          <Stack.Screen
+            name="Transfer"
+            component={Transfer}
+            options={{
+              animationEnabled: true,
+              cardStyle: { backgroundColor: "transparent" },
+              mode: "modal",
+            }}
+          />
           {/* <Stack.Navigator screenOptions={{ presentation: "modal" }}> */}
           <Stack.Screen
             name="Profile"

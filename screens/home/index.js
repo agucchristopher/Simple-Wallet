@@ -13,6 +13,12 @@ import React, { useState } from "react";
 import { Header } from "../../components/";
 import { StatusBar } from "expo-status-bar";
 import Svg, { Path } from "react-native-svg";
+import Animated, {
+  FadeIn,
+  BounceIn,
+  BounceInDown,
+  BounceInRight,
+} from "react-native-reanimated";
 import EmojiPicker from "../../components/modal/EmojiPicker";
 
 const Home = ({ navigation }) => {
@@ -27,7 +33,7 @@ const Home = ({ navigation }) => {
           styles.container,
           {
             backgroundColor: isDarkmode ? "#121212" : "white",
-            height: "36%",
+            height: "40%",
           },
         ]}
       >
@@ -46,42 +52,56 @@ const Home = ({ navigation }) => {
           <View
             style={{
               flexDirection: "row",
+              width: "100%",
+              alignItems: "center",
               justifyContent: "space-between",
-              gap: 5,
+              padding: 5,
+              paddingLeft: 0,
+              margin: 1,
             }}
           >
-            <View style={{ flexDirection: "column" }}>
+            <View style={{}}>
               <Text
                 style={{
                   color: darkmode ? "white" : "#121212",
                   fontSize: 25,
                   fontFamily: "RBold",
                   marginLeft: 15,
+                  textAlign: "center",
                 }}
               >
                 Hi, Christopher
               </Text>
             </View>
-          </View>
-
-          <View style={{ flexDirection: "row", gap: 10 }}>
-            <TouchableOpacity
-              onPress={() => navigation.navigate("Profile")}
+            <View
               style={{
-                backgroundColor: "grey",
-                borderRadius: 10,
-                height: 50,
-                width: 50,
+                // flexDirection: "row",
+                gap: 10,
+                // marginTop: 10,
+                // marginRight: 5,
+                display: "flex",
+                alignSelf: "flex-end",
               }}
             >
-              <Image
-                source={require("./../../assets/images/me.png")}
-                style={{ height: 50, width: 50 }}
-              />
-            </TouchableOpacity>
+              <TouchableOpacity
+                onPress={() => navigation.navigate("Profile")}
+                style={{
+                  backgroundColor: "grey",
+                  borderRadius: 10,
+                  height: 50,
+                  width: 50,
+                }}
+              >
+                <Image
+                  source={require("./../../assets/images/me.png")}
+                  style={{ height: 50, width: 50 }}
+                />
+              </TouchableOpacity>
+            </View>
           </View>
         </View>
-        <View
+        <Animated.View
+          entering={BounceInDown.duration(1000)}
           style={{
             height: 120,
             backgroundColor: "#333333",
@@ -106,10 +126,11 @@ const Home = ({ navigation }) => {
             onPress={() => seteyeOpen(!eyeOpen)}
             style={{ color: "white", fontSize: 30, fontFamily: "RBold" }}
           >
-            ${eyeOpen ? "2,300,000" : "****"}{" "}
-            <Text style={{ fontSize: 20 }}>.00</Text>
+            ${eyeOpen ? "2,300,000" : "****"}
+            {""}
+            <Text style={{ fontSize: 20 }}>{eyeOpen ? ".00" : ".00"}</Text>
           </Text>
-        </View>
+        </Animated.View>
         <View
           style={{
             alignContent: "center",
@@ -165,88 +186,140 @@ const Home = ({ navigation }) => {
         showsHorizontalScrollIndicator={false}
         showsVerticalScrollIndicator={false}
       >
-        <Text
+        <View
           style={{
-            color: "black",
-            // fontWeight: "bold",
-            fontFamily: "RBold",
-            fontSize: 25,
-            margin: 10,
+            flexDirection: "row",
+            width: "100%",
+            alignItems: "center",
+            justifyContent: "space-between",
+            padding: 5,
+            paddingLeft: 0,
+            margin: 5,
           }}
         >
-          Recent Transactions
-        </Text>
-        <FlatList
-          data={["in", "out", "in", "in", "out", "out", "in", "in"]}
+          <Text
+            style={{
+              color: "black",
+              // fontWeight: "bold",
+              fontFamily: "RBold",
+              fontSize: 26,
+              display: "flex",
+              alignSelf: "flex-start",
+              marginLeft: 15,
+            }}
+          >
+            Recent Transactions
+          </Text>
+          <TouchableOpacity>
+            <Text
+              style={{
+                color: "black",
+                // fontWeight: "bold",
+                fontFamily: "RBold",
+                fontSize: 18,
+                // margin: 12,
+                marginRight: 5,
+                display: "flex",
+                alignSelf: "flex-end",
+              }}
+            >
+              See All
+            </Text>
+          </TouchableOpacity>
+        </View>
+        <Animated.FlatList
+          data={[
+            { type: "in", details: "Transfer to bank", amount: 100 },
+            { type: "out", details: "Paypal Funding", amount: 60 },
+            { type: "in", details: "Tominwa", amount: 40 },
+            { type: "in", details: "Jake", amount: 100 },
+          ]}
           renderItem={({ item }) => {
             return (
-              <TouchableOpacity
-                style={{
-                  flexDirection: "row",
-                  margin: 10,
-                  borderColor: "grey",
-                  padding: 5,
-                  borderRadius: 5,
-                  borderWidth: 1.5,
-                }}
-              >
-                <View style={{ margin: 5, marginRight: 15 }}>
+              <>
+                <Animated.View entering={BounceInRight.duration(1200)}>
                   <TouchableOpacity
                     style={{
-                      backgroundColor: item == "out" ? "crimson" : "green",
-                      borderRadius: 50,
-                      height: 50,
-                      width: 50,
-                      alignItems: "center",
-                      justifyContent: "center",
+                      flexDirection: "row",
+                      margin: 2,
+                      // borderColor: "grey",
+                      padding: 12,
+                      borderRadius: 0,
+                      // borderWidth: 0.5,
+                      elevation: 0,
+                      marginTop: 5,
+                      justifyContent: "space-between",
                     }}
                   >
-                    <Svg width={38} height={30} viewBox="0 0 24 24">
-                      <Path
-                        d={
-                          item == "out"
-                            ? "M16.0037 9.41421L7.39712 18.0208L5.98291 16.6066L14.5895 8H7.00373V6H18.0037V17H16.0037V9.41421Z"
-                            : "M9 13.589L17.6066 4.98242L19.0208 6.39664L10.4142 15.0032H18V17.0032H7V6.00324H9V13.589Z"
-                        }
-                        fill="#fff"
-                      />
-                    </Svg>
+                    <View style={{ flexDirection: "row" }}>
+                      <View style={{ margin: 5, marginRight: 15 }}>
+                        <TouchableOpacity
+                          style={{
+                            backgroundColor:
+                              item.type == "out" ? "crimson" : "green",
+                            borderRadius: 50,
+                            height: 50,
+                            width: 50,
+                            alignItems: "center",
+                            justifyContent: "center",
+                            // elevation: 5,
+                          }}
+                        >
+                          <Svg width={38} height={30} viewBox="0 0 24 24">
+                            <Path
+                              d={
+                                item.type == "out"
+                                  ? "M16.0037 9.41421L7.39712 18.0208L5.98291 16.6066L14.5895 8H7.00373V6H18.0037V17H16.0037V9.41421Z"
+                                  : "M9 13.589L17.6066 4.98242L19.0208 6.39664L10.4142 15.0032H18V17.0032H7V6.00324H9V13.589Z"
+                              }
+                              fill="#fff"
+                            />
+                          </Svg>
+                        </TouchableOpacity>
+                      </View>
+                      <View style={{ flexDirection: "column", gap: 5 }}>
+                        <Text
+                          style={{
+                            fontFamily: "RBold",
+                            fontSize: 20,
+                            color: "#121212",
+                          }}
+                        >
+                          {item.details}
+                        </Text>
+                        <Text
+                          style={{
+                            fontFamily: "RMedium",
+                            fontSize: 20,
+                            color: "#121212",
+                          }}
+                        >
+                          Fri 2nd September
+                        </Text>
+                      </View>
+                    </View>
+
+                    <Text
+                      style={{
+                        justifyContent: "flex-end",
+                        marginBottom: 10,
+                        fontFamily: "RBold",
+                        fontSize: 23,
+                        // color: "#FFFFFF",
+                        // marginLeft: 70,
+                        // flexDirection: "row",
+                        gap: 10,
+                        // marginTop: 10,
+                        // marginRight: 5,
+                        display: "flex",
+                        alignSelf: "flex-end",
+                      }}
+                    >
+                      {item.type == "in" ? "+" : "-"}${item.amount}
+                    </Text>
                   </TouchableOpacity>
-                </View>
-                <View style={{ flexDirection: "column", gap: 5 }}>
-                  <Text
-                    style={{
-                      fontFamily: "RBold",
-                      fontSize: 20,
-                      color: "#121212",
-                    }}
-                  >
-                    Paypal Funding
-                  </Text>
-                  <Text
-                    style={{
-                      fontFamily: "RBold",
-                      fontSize: 20,
-                      color: "#121212",
-                    }}
-                  >
-                    Fri 2nd September
-                  </Text>
-                </View>
-                <Text
-                  style={{
-                    alignSelf: "flex-end",
-                    justifyContent: "flex-end",
-                    margin: 10,
-                    fontFamily: "RBold",
-                    fontSize: 23,
-                    // color: "#FFFFFF",
-                    marginLeft: 70,
-                  }}
-                >
-                  $200
-                </Text>
-              </TouchableOpacity>
+                </Animated.View>
+              </>
             );
           }}
         />
